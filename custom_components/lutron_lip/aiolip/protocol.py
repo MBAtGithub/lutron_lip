@@ -390,6 +390,7 @@ class LIP:
     def _process_message(self, response):
         """Process a lip message. This is processing only response (i.e. ~") events."""
 
+        response = response.strip()
         message = self._parser.parse(response)
         _LOGGER.debug("Incoming message: %s", message.raw if message else response)
         if message:
