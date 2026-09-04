@@ -122,6 +122,7 @@ class LIPParser:
         if not response or self._empty_re.match(response):
             return None
 
+	response = response.strip()
         response = self._clean_prompt_re.sub("", response)
 
         if self._keepalive_re.match(response):
@@ -390,7 +391,6 @@ class LIP:
     def _process_message(self, response):
         """Process a lip message. This is processing only response (i.e. ~") events."""
 
-        response = response.strip()
         message = self._parser.parse(response)
         _LOGGER.debug("Incoming message: %s", message.raw if message else response)
         if message:
