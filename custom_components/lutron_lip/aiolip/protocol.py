@@ -122,11 +122,11 @@ class LIPParser:
         if not response or self._empty_re.match(response):
             return None
 
-	response = response.strip()
+        response = response.strip()
         if not response:
-	    return None
+            return None
 
-	response = self._clean_prompt_re.sub("", response)
+        response = self._clean_prompt_re.sub("", response)
 
         if self._keepalive_re.match(response):
             self._last_keep_alive_response = time.time()
